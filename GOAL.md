@@ -30,7 +30,7 @@ A free, public, beautiful web tool over the WSDOT Standard Specifications for Ro
 
 **Numbers you can quote:** 3,853 sections ever published; 3,095 live in 2026; 1,599 running continuously since 2000; 269 new in 2026; 11,561 revisions tracked.
 
-Two facts the parser surfaced that shape the product: **124 sections are titled "Vacant"** (WSDOT's marker for a struck section — a draft citing one is a real finding), and **WSDOT publishes full annual editions, not amendment packets**, so "what changed" is an edition diff.
+Two facts the parser surfaced that shape the product: **142 sections are titled "Vacant"** (WSDOT's marker for a struck section — a draft citing one is a real finding), and **WSDOT publishes full annual editions, not amendment packets**, so "what changed" is a diff across editions — which is why the section history exists and why it's the centerpiece.
 
 ## Build it in this order
 
