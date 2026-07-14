@@ -4,7 +4,7 @@ A free, public tool over the **WSDOT Standard Specifications for Road, Bridge, a
 
 > **Unofficial.** Not affiliated with or endorsed by the Washington State Department of Transportation. Always verify against the published manual.
 
-**A free tool from [Katabatic Engineering](#).**
+**A free tool from Katabatic Engineering.**
 
 ---
 
