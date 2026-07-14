@@ -2,7 +2,10 @@
 
 > Working name candidates: **SpecCompass**, **ClearSpec**, **SpecNavigator** (final name TBD — must read as clearly unofficial, no WSDOT branding).
 > Planned with Claude Fable 5 (July 2026). Implementation on Opus / Codex.
-> **Phase 0 (corpus pipeline) is COMPLETE and validated — see "Validated findings" below.**
+> **Phases 0, 1, 3, 4 are built. Live site: https://jacilynh.github.io/wsdot-spec-tool/**
+> Phase 0 (corpus pipeline) validated; Spec Explorer, keyword search, and the Section
+> History viewer are deployed. Remaining: requirements extraction (2), semantic search
+> (3), document scanner (5), Ask-the-Specs Worker (6), polish (7).
 
 ## Mission
 

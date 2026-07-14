@@ -4,7 +4,7 @@ A free, public tool over the **WSDOT Standard Specifications for Road, Bridge, a
 
 > **Unofficial.** Not affiliated with or endorsed by the Washington State Department of Transportation. Always verify against the published manual.
 
-**A free tool from Katabatic Engineering.**
+**Live:** <https://jacilynh.github.io/wsdot-spec-tool/> · A free tool from Katabatic Engineering.
 
 ---
 
@@ -73,6 +73,17 @@ make test-all  # everything, including the ~5min suite against the real PDFs
 ```
 
 The source PDFs are **not vendored** into this repo — they're WSDOT's to publish. `make corpus` fetches them from wsdot.wa.gov. The integration tests self-skip if they're absent, so a fresh clone runs green immediately.
+
+## The web app
+
+The site itself — a Spec Explorer over the current edition and a **Section History** viewer showing each section's 26-year life — lives in [`app/`](app/) (Vite + React + TypeScript). Build its data and run it with:
+
+```bash
+make app-data     # fetch + parse 17 editions, emit app/public/data/ (~5 min once)
+cd app && npm install && npm run dev
+```
+
+See [`app/README.md`](app/README.md) for the layout. The pipeline that feeds it is described below.
 
 ## Build your own
 
