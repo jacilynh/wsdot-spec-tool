@@ -1,0 +1,33 @@
+# Cloudflare Worker config for "Ask the Specs".
+#
+# The Anthropic API key is NOT here — it is a secret, set once with:
+#   wrangler secret put ANTHROPIC_API_KEY
+# Nothing sensitive belongs in this file or anywhere in the repo.
+
+name = "wsdot-ask-the-specs"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+# The site allowed to call this Worker (CORS). Change to your deployed origin.
+ALLOWED_ORIGIN = "https://jacilynh.github.io"
+# Where the Worker fetches the retrieval corpus (public spec text, emitted by the build).
+CORPUS_URL = "https://jacilynh.github.io/wsdot-spec-tool/data/ask-corpus.json"
+# Hard monthly spend ceiling in USD. When reached, the Worker returns `capped` and the
+# site falls back to keyword search until the next month. This makes overspend impossible.
+MONTHLY_CAP_USD = "30"
+
+# Monthly spend counter. Create with:  wrangler kv namespace create SPEND
+# then paste the returned id below (and a preview_id for `wrangler dev`).
+[[kv_namespaces]]
+binding = "SPEND"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# Native per-IP rate limiting. Optional — delete this block if your account lacks the
+# binding; the Worker skips rate limiting gracefully when it is absent.
+[[unsafe.bindings]]
+name = "RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "1001"
+simple = { limit = 15, period = 60 }

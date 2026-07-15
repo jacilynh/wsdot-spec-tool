@@ -4,8 +4,9 @@
 > Planned with Claude Fable 5 (July 2026). Implementation on Opus / Codex.
 > **Phases 0, 1, 3, 4 are built. Live site: https://jacilynh.github.io/wsdot-spec-tool/**
 > Phase 0 (corpus pipeline) validated; Spec Explorer, keyword search, and the Section
-> History viewer, the client-side document scanner, and the requirements explorer are
-> deployed. Remaining: semantic search (3), Ask-the-Specs Worker (6), polish (7).
+> History viewer, the document scanner, and the requirements explorer are deployed. The
+> Ask-the-Specs Worker (6) is built and tested (worker/) but needs a Cloudflare account +
+> API key to deploy. Remaining: semantic search (3), polish (7).
 
 ## Mission
 

@@ -105,6 +105,55 @@ def timeline_with_diffs(num, record, editions, years):
     return out
 
 
+CHUNK_MAX = 800  # chars; keeps retrieval granular and the model's context bounded
+DOT_LEADER_RUN = re.compile(r"(?:\.\s){4,}")  # contents-listing artifact, not prose
+
+
+def is_prose(text):
+    """A retrieval chunk should be readable prose, not a contents-listing fragment."""
+    if DOT_LEADER_RUN.search(text):
+        return False
+    letters = sum(c.isalpha() for c in text)
+    return letters >= 0.5 * len(text)
+
+
+def chunk_text(text, limit=CHUNK_MAX):
+    """Split section text into retrieval-sized pieces, breaking on line boundaries.
+
+    Section-level chunks would be too coarse for long structural sections and would send
+    the model more context than it needs; splitting on the parser's line breaks keeps each
+    piece focused without cutting mid-line.
+    """
+    chunks, buf = [], ""
+    for line in text.split("\n"):
+        if buf and len(buf) + len(line) + 1 > limit:
+            chunks.append(buf.strip())
+            buf = line
+        else:
+            buf = f"{buf} {line}".strip() if buf else line
+    if buf.strip():
+        chunks.append(buf.strip())
+    return chunks
+
+
+def emit_ask_corpus(current, out_dir):
+    """The retrieval corpus the Ask-the-Specs Worker grounds its answers on.
+
+    One flat file of {section, text} chunks for every non-vacant section in the current
+    edition. The Worker fetches it once, retrieves the relevant chunks per question, and
+    never sees anything but public specification text.
+    """
+    corpus = []
+    for num, section in current.items():
+        if section.get("vacant") or len(section["text"]) < 40:
+            continue
+        for piece in chunk_text(section["text"]):
+            if len(piece) >= 40 and is_prose(piece):
+                corpus.append({"section": num, "text": piece})
+    _write(os.path.join(out_dir, "ask-corpus.json"), corpus)
+    return len(corpus)
+
+
 def emit_requirements(requirements_path, out_dir, index):
     """Split the extracted requirements by division and record filter metadata.
 
@@ -195,6 +244,7 @@ def main():
     # Requirements augment the index in place (filter vocabularies + totals), so this
     # runs before index.json is written.
     requirement_count = emit_requirements(requirements_path, out_dir, index)
+    corpus_count = emit_ask_corpus(current, out_dir)
     _write(os.path.join(out_dir, "index.json"), index)
 
     # Per-division current text and per-division history with diffs.
@@ -230,10 +280,10 @@ def main():
         for root, _, files in os.walk(out_dir)
         for f in files
     )
-    print(f"wrote {out_dir}: index + sections + history + requirements ({total / 1e6:.1f} MB)")
+    print(f"wrote {out_dir} ({total / 1e6:.1f} MB)")
     print(
         f"  {len(index['sections']):,} current sections; {revisions:,} revisions diffed; "
-        f"{requirement_count:,} requirements"
+        f"{requirement_count:,} requirements; {corpus_count:,} retrieval chunks"
     )
 
 

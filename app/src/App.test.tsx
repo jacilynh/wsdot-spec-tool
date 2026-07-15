@@ -133,6 +133,23 @@ describe("App", () => {
     expect(screen.getByText(/never leaves your browser/i)).toBeInTheDocument();
   });
 
+  it("falls back to keyword search on Ask when no worker is configured", async () => {
+    // VITE_ASK_URL is unset in the test environment, so the AI answer is unavailable and
+    // the page must still return useful matching sections rather than nothing.
+    render(
+      <MemoryRouter initialEntries={["/ask"]}>
+        <App />
+      </MemoryRouter>,
+    );
+    const box = await screen.findByLabelText(/your question/i);
+    fireEvent.change(box, { target: { value: "payment" } });
+    fireEvent.click(screen.getByRole("button", { name: /^ask$/i }));
+
+    expect(await screen.findByText(/require the optional Ask-the-Specs service/i)).toBeInTheDocument();
+    expect(screen.getByText("Relevant sections")).toBeInTheDocument();
+    expect(screen.getByText(/Payment for Material on Hand/)).toBeInTheDocument();
+  });
+
   it("lists requirements and narrows them with a party filter", async () => {
     render(
       <MemoryRouter initialEntries={["/requirements"]}>

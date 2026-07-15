@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import { IndexProvider } from "./lib/indexContext";
 import { About } from "./routes/About";
+import { Ask } from "./routes/Ask";
 import { Browse } from "./routes/Browse";
 import { Home } from "./routes/Home";
 import { HowBuilt } from "./routes/HowBuilt";
@@ -20,6 +21,7 @@ export function App() {
             <Route path="/" element={<Home />} />
             <Route path="/browse" element={<Browse />} />
             <Route path="/scan" element={<Scan />} />
+            <Route path="/ask" element={<Ask />} />
             <Route path="/requirements" element={<Requirements />} />
             <Route path="/section/:num" element={<SectionPage />} />
             <Route path="/how-it-was-built" element={<HowBuilt />} />
