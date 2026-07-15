@@ -35,6 +35,41 @@ Three decisions are load-bearing, and forks should understand them before changi
 - **Your documents never leave your browser.** The document scanner is entirely client-side. There is no upload endpoint and never will be one — draft, pre-bid provisions have no business on someone else's server.
 - **AI runs at build time, not run time.** Claude read and structured the corpus once, offline. The shipped site is static. The one live feature (grounded Q&A) is a rate-limited, spend-capped Cloudflare Worker, free to everyone, that receives *questions* and never documents.
 
+## Architecture
+
+Everything expensive happens once, at build time. What ships is static files plus one small optional function.
+
+```
+  17 edition PDFs (2000–2026)          BUILD TIME  (Python + Node, run once)
+  wsdot.wa.gov, not vendored
+            │
+            ▼
+  ┌───────────────────────────────────────────────────────────────┐
+  │ pipeline/                                                      │
+  │   parse_any_edition.py   PDF ─▶ structured sections (no TOC)   │
+  │   build_history.py       every section's 26-year timeline      │
+  │   extract_requirements.py  every "shall / must" obligation     │
+  │   build_app_data.py      ─▶ static JSON, split by division     │
+  │ app/scripts/embed.mjs    int8 semantic vectors + self-host model│
+  └───────────────────────────────────────────────────────────────┘
+            │  static JSON, int8 embeddings, self-hosted model (git-ignored)
+            ▼
+  ┌───────────────────────────────────────────────────────────────┐
+  │ app/  (React + TypeScript, static SPA on GitHub Pages)         │  RUN TIME
+  │   Explorer · Section History · Requirements · Draft scanner    │  (the browser)
+  │   Hybrid search  ── keyword + in-browser semantic (WASM)       │
+  └───────────────────────────────────────────────────────────────┘
+            │  question only (never a document)
+            ▼
+  ┌───────────────────────────────────────────────────────────────┐
+  │ worker/  (optional Cloudflare Worker — the ONLY server)        │
+  │   retrieve spec chunks ─▶ Claude Haiku answers, cited          │
+  │   hard monthly spend cap · API key is a secret                 │
+  └───────────────────────────────────────────────────────────────┘
+```
+
+The browser fetches only what it needs, when it needs it: a ~250 KB index up front, then each division's text, history, or requirements on demand, and the ~44 MB semantic model only if you use meaning-based search.
+
 ## The interesting part: parsing 26 years of PDFs
 
 This is the bit worth reading if you're here to learn something.

@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect, useState, type ReactNode } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
 import { DISCLAIMER, PUBLISHER, SITE_NAME } from "../config";
 import { ThemeToggle } from "./ThemeToggle";
@@ -16,7 +16,7 @@ const NAV = [
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col overflow-x-clip">
       <Header />
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6">{children}</main>
       <Footer />
@@ -25,6 +25,12 @@ export function Layout({ children }: { children: ReactNode }) {
 }
 
 function Header() {
+  const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  // Close the mobile menu whenever navigation happens.
+  useEffect(() => setOpen(false), [pathname]);
+
   return (
     <header className="sticky top-0 z-20 border-b border-border bg-surface/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3 sm:px-6">
@@ -34,26 +40,61 @@ function Header() {
             Unofficial
           </span>
         </NavLink>
-        <nav className="ml-auto flex items-center gap-1 sm:gap-2">
+
+        {/* Desktop: the full nav row, shown only at widths where it fits. */}
+        <nav className="ml-auto hidden items-center gap-1 lg:flex">
+          {NAV.map((item) => (
+            <NavLink key={item.to} to={item.to} end={item.end} className={navLinkClass}>
+              {item.label}
+            </NavLink>
+          ))}
+          <ThemeToggle />
+        </nav>
+
+        {/* Mobile: theme toggle + a button that opens the links below the header. */}
+        <div className="ml-auto flex items-center gap-2 lg:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            className="rounded-md border border-border bg-raised px-3 py-1.5 text-sm text-muted transition-colors hover:text-ink"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            {open ? "✕ Close" : "Menu"}
+          </button>
+        </div>
+      </div>
+
+      {open && (
+        <nav id="mobile-menu" className="border-t border-border bg-surface px-4 py-2 lg:hidden" aria-label="Main">
           {NAV.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               end={item.end}
               className={({ isActive }) =>
-                `rounded-md px-2.5 py-1.5 text-sm transition-colors ${
-                  isActive ? "text-ink font-medium" : "text-muted hover:text-ink"
+                `block rounded-md px-3 py-2.5 text-sm transition-colors ${
+                  isActive
+                    ? "bg-raised font-medium text-ink"
+                    : "text-muted hover:bg-raised hover:text-ink"
                 }`
               }
             >
               {item.label}
             </NavLink>
           ))}
-          <ThemeToggle />
         </nav>
-      </div>
+      )}
     </header>
   );
+}
+
+function navLinkClass({ isActive }: { isActive: boolean }): string {
+  return `rounded-md px-2.5 py-1.5 text-sm transition-colors ${
+    isActive ? "font-medium text-ink" : "text-muted hover:text-ink"
+  }`;
 }
 
 function Footer() {
