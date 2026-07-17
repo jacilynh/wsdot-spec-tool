@@ -1,18 +1,18 @@
+import { getActiveState } from "../states";
 import type { Index, Requirement, SectionHistory, SectionText } from "../types";
 
 /**
- * Data access. Everything is static JSON under `public/data`, fetched relative to the
- * deployed base so the same build works at a domain root or a Pages subpath. Each
- * fetched file is cached in memory for the session — the index once, and each
- * division's text/history the first time it's opened.
+ * Data access. Everything is static JSON under `public/data/<state>`, fetched relative to
+ * the deployed base so the same build works at a domain root or a Pages subpath. The active
+ * state's `dataBase` selects which state's data is served (e.g. "data" or "data/nd"). Each
+ * fetched file is cached in memory for the session, keyed by full URL so states cache
+ * separately — the index once per state, and each division's text/history when opened.
  */
-
-const base = import.meta.env.BASE_URL; // e.g. "/" or "/dotcompass/"
 
 const cache = new Map<string, Promise<unknown>>();
 
 function load<T>(path: string): Promise<T> {
-  const url = `${base}data/${path}`;
+  const url = `${import.meta.env.BASE_URL}${getActiveState().dataBase}/${path}`;
   let pending = cache.get(url) as Promise<T> | undefined;
   if (!pending) {
     pending = fetch(url).then((res) => {

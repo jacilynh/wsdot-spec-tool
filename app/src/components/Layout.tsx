@@ -2,17 +2,21 @@ import { useEffect, useState, type ReactNode } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 import { DISCLAIMER, PUBLISHER, SITE_NAME } from "../config";
+import { STATES, useActiveState, useSetState, type StateConfig } from "../states";
 import { ThemeToggle } from "./ThemeToggle";
 
-const NAV = [
-  { to: "/", label: "Home", end: true },
-  { to: "/ask", label: "Ask" },
-  { to: "/browse", label: "Browse" },
-  { to: "/requirements", label: "Requirements" },
-  { to: "/scan", label: "Check a draft" },
-  { to: "/how-it-was-built", label: "How it was built" },
-  { to: "/about", label: "About" },
-];
+/** The nav links available for a state, hiding features its data can't support. */
+function navFor(state: StateConfig) {
+  return [
+    { to: "/", label: "Home", end: true },
+    ...(state.ask ? [{ to: "/ask", label: "Ask" }] : []),
+    { to: "/browse", label: "Browse" },
+    ...(state.requirements ? [{ to: "/requirements", label: "Requirements" }] : []),
+    { to: "/scan", label: "Check a draft" },
+    { to: "/how-it-was-built", label: "How it was built" },
+    { to: "/about", label: "About" },
+  ];
+}
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
@@ -27,6 +31,8 @@ export function Layout({ children }: { children: ReactNode }) {
 function Header() {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
+  const state = useActiveState();
+  const nav = navFor(state);
 
   // Close the mobile menu whenever navigation happens.
   useEffect(() => setOpen(false), [pathname]);
@@ -41,9 +47,11 @@ function Header() {
           </span>
         </NavLink>
 
+        <StateSwitcher />
+
         {/* Desktop: the full nav row, shown only at widths where it fits. */}
         <nav className="ml-auto hidden items-center gap-1 lg:flex">
-          {NAV.map((item) => (
+          {nav.map((item) => (
             <NavLink key={item.to} to={item.to} end={item.end} className={navLinkClass}>
               {item.label}
             </NavLink>
@@ -69,7 +77,7 @@ function Header() {
 
       {open && (
         <nav id="mobile-menu" className="border-t border-border bg-surface px-4 py-2 lg:hidden" aria-label="Main">
-          {NAV.map((item) => (
+          {nav.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
@@ -88,6 +96,39 @@ function Header() {
         </nav>
       )}
     </header>
+  );
+}
+
+function StateSwitcher() {
+  const state = useActiveState();
+  const setSlug = useSetState();
+  return (
+    <div className="flex items-center gap-2">
+      <label className="sr-only" htmlFor="state-switcher">
+        Jurisdiction
+      </label>
+      <select
+        id="state-switcher"
+        value={state.slug}
+        onChange={(e) => setSlug(e.target.value)}
+        className="rounded-md border border-border bg-raised px-2 py-1 text-xs font-medium text-ink outline-none focus:border-accent"
+        title="Switch jurisdiction"
+      >
+        {STATES.map((s) => (
+          <option key={s.slug} value={s.slug}>
+            {s.dot}
+          </option>
+        ))}
+      </select>
+      {state.uncleared && (
+        <span
+          className="hidden rounded bg-vacated/15 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-vacated sm:inline"
+          title="Reuse terms unstated — local demo only, not published"
+        >
+          Local demo
+        </span>
+      )}
+    </div>
   );
 }
 

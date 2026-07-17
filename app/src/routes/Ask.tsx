@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { DISCLAIMER } from "../config";
+import { FeatureUnavailable } from "../components/FeatureUnavailable";
 import { searchSections } from "../components/SearchBox";
 import { type AnswerSegment, ASK_URL, type AskResult, askWorker, splitCitations } from "../lib/ask";
 import { useIndex } from "../lib/indexContext";
+import { useActiveState } from "../states";
 import type { IndexEntry } from "../types";
 
 /**
@@ -18,6 +20,7 @@ import type { IndexEntry } from "../types";
  */
 export function Ask() {
   const index = useIndex();
+  const state = useActiveState();
   const [question, setQuestion] = useState("");
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<AskResult | null>(null);
@@ -31,6 +34,10 @@ export function Ask() {
     setMatches(searchSections(index.sections, q).slice(0, 8));
     setResult(await askWorker(q));
     setBusy(false);
+  }
+
+  if (!state.ask) {
+    return <FeatureUnavailable feature="Ask the specifications" stateName={state.name} />;
   }
 
   const answered = result?.kind === "answer";

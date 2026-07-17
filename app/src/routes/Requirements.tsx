@@ -1,10 +1,12 @@
 import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 
+import { FeatureUnavailable } from "../components/FeatureUnavailable";
 import { getDivisionRequirements } from "../lib/api";
 import { useIndex } from "../lib/indexContext";
 import { filterRequirements } from "../lib/requirements";
 import { useAsync } from "../lib/useAsync";
+import { useActiveState } from "../states";
 import type { Requirement } from "../types";
 
 /**
@@ -14,7 +16,9 @@ import type { Requirement } from "../types";
  * honest index of the book's requirements.
  */
 export function Requirements() {
-  const { divisions, requirements: meta } = useIndex();
+  const index = useIndex();
+  const state = useActiveState();
+  const { divisions } = index;
   const [params, setParams] = useSearchParams();
   const division = Number(params.get("division")) || divisions[0]!.n;
 
@@ -32,6 +36,11 @@ export function Requirements() {
   const toggleTopic = (t: string) =>
     setTopics((cur) => (cur.includes(t) ? cur.filter((x) => x !== t) : [...cur, t]));
 
+  // Reached by deep link for a state without a requirements index — land gracefully.
+  if (!state.requirements || !index.requirements) {
+    return <FeatureUnavailable feature="The requirements explorer" stateName={state.name} />;
+  }
+  const meta = index.requirements;
   const activeTitle = divisions.find((d) => d.n === division)?.title ?? "";
 
   return (

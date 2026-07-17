@@ -1,5 +1,6 @@
 import { createContext, useContext, type ReactNode } from "react";
 
+import { useActiveState } from "../states";
 import type { Index } from "../types";
 import { getIndex } from "./api";
 import { useAsync } from "./useAsync";
@@ -7,11 +8,13 @@ import { useAsync } from "./useAsync";
 /**
  * The index (stats + division names + every current section) is needed by almost every
  * screen, so it loads once here and is shared by context rather than refetched per route.
+ * It is re-fetched when the active state changes (keyed on the state's slug).
  */
 const IndexContext = createContext<Index | null>(null);
 
 export function IndexProvider({ children }: { children: (index: Index) => ReactNode }) {
-  const { data, error, loading } = useAsync(getIndex, []);
+  const state = useActiveState();
+  const { data, error, loading } = useAsync(getIndex, [state.slug]);
 
   if (loading) return <FullPageMessage>Loading the specifications…</FullPageMessage>;
   if (error || !data)

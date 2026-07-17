@@ -50,8 +50,9 @@ export function HowBuilt() {
       </Step>
 
       <Step n={3} title="Pull out the requirements">
-        Every “shall”, “must”, and “is required” statement — {requirements.total.toLocaleString()} of
-        them — is extracted verbatim and tagged by who is bound and what it’s about, feeding the{" "}
+        Every “shall”, “must”, and “is required” statement
+        {requirements ? ` — ${requirements.total.toLocaleString()} of them —` : " "}
+        is extracted verbatim and tagged by who is bound and what it’s about, feeding the{" "}
         <Link to="/requirements" className="text-accent hover:underline">Requirements</Link> index.
         This is deliberately rule-based, not AI-generated: the entries are exact quotes, so there’s
         nothing to hallucinate. The same choice underlies the{" "}

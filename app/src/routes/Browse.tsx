@@ -4,7 +4,6 @@ import { Link, useSearchParams } from "react-router-dom";
 import { SearchBox } from "../components/SearchBox";
 import { VacantBadge } from "../components/badges";
 import { useIndex } from "../lib/indexContext";
-import { compareSectionNumbers } from "../lib/sectionNumber";
 
 /**
  * The Spec Explorer: a division picker on the left, the sections of the chosen division
@@ -16,10 +15,9 @@ export function Browse() {
   const [params, setParams] = useSearchParams();
   const active = Number(params.get("division")) || divisions[0]!.n;
 
-  const inDivision = useMemo(
-    () => sections.filter((s) => s.division === active).sort((a, b) => compareSectionNumbers(a.num, b.num)),
-    [sections, active],
-  );
+  // The index is already emitted in book order (build_app_data.py / build_state.py sort by
+  // the state's numbering key), so a filter preserves order without a client-side re-sort.
+  const inDivision = useMemo(() => sections.filter((s) => s.division === active), [sections, active]);
   const activeTitle = divisions.find((d) => d.n === active)?.title ?? "";
 
   return (

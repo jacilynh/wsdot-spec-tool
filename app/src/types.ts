@@ -35,13 +35,28 @@ export interface RequirementStats {
   perDivision: Record<string, number>;
 }
 
+/** Per-state metadata, present on index.json emitted by build_state.py (multi-state path). */
+export interface IndexMeta {
+  slug: string;
+  state: string;
+  dot: string;
+  historyEnabled: boolean;
+  reuse: string;
+  uncleared: boolean;
+  sourceUrl: string;
+  sourceNote: string;
+}
+
 export interface Index {
   stats: Stats;
   divisions: Division[];
   sections: IndexEntry[];
   /** Section numbers gone from the latest edition, mapped to the last year they appeared. */
   removed: Record<string, number>;
-  requirements: RequirementStats;
+  /** Present only for states with the requirements feature (WSDOT); absent otherwise. */
+  requirements?: RequirementStats;
+  /** Present on the multi-state build path (build_state.py); absent on the WSDOT build. */
+  meta?: IndexMeta;
 }
 
 /** One extracted obligation, from requirements/<d>.json. Text is verbatim. */

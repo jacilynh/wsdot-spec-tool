@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import { Layout } from "./components/Layout";
 import { IndexProvider } from "./lib/indexContext";
+import { StateProvider } from "./states";
 import { About } from "./routes/About";
 import { Ask } from "./routes/Ask";
 import { Browse } from "./routes/Browse";
@@ -15,23 +16,25 @@ import { SectionPage } from "./routes/SectionPage";
 
 export function App() {
   return (
-    <IndexProvider>
-      {() => (
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/browse" element={<Browse />} />
-            <Route path="/scan" element={<Scan />} />
-            <Route path="/ask" element={<Ask />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/requirements" element={<Requirements />} />
-            <Route path="/section/:num" element={<SectionPage />} />
-            <Route path="/how-it-was-built" element={<HowBuilt />} />
-            <Route path="/about" element={<About />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Layout>
-      )}
-    </IndexProvider>
+    <StateProvider>
+      <IndexProvider>
+        {() => (
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/browse" element={<Browse />} />
+              <Route path="/scan" element={<Scan />} />
+              <Route path="/ask" element={<Ask />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/requirements" element={<Requirements />} />
+              <Route path="/section/:num" element={<SectionPage />} />
+              <Route path="/how-it-was-built" element={<HowBuilt />} />
+              <Route path="/about" element={<About />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Layout>
+        )}
+      </IndexProvider>
+    </StateProvider>
   );
 }

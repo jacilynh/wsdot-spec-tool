@@ -5,6 +5,7 @@ import { searchSections } from "../components/SearchBox";
 import { fuseRankings } from "../lib/hybrid";
 import { useIndex } from "../lib/indexContext";
 import { semanticSearch } from "../lib/semantic";
+import { useActiveState } from "../states";
 
 type SemanticState =
   | { status: "off" } // no query yet
@@ -20,6 +21,7 @@ type SemanticState =
  */
 export function Search() {
   const index = useIndex();
+  const state = useActiveState();
   const [params] = useSearchParams();
   const query = params.get("q")?.trim() ?? "";
 
@@ -31,9 +33,10 @@ export function Search() {
     [index.sections, query],
   );
 
-  // Semantic ranking loads the model lazily and resolves asynchronously.
+  // Semantic ranking loads the model lazily and resolves asynchronously. Only states with
+  // precomputed embeddings (e.g. WSDOT) enable it; others stay keyword-only.
   useEffect(() => {
-    if (!query) {
+    if (!query || !state.semantic) {
       setSemantic({ status: "off" });
       return;
     }
@@ -46,7 +49,7 @@ export function Search() {
     return () => {
       live = false;
     };
-  }, [query]);
+  }, [query, state.semantic]);
 
   const titleOf = useMemo(
     () => new Map(index.sections.map((s) => [s.num, s.title])),
@@ -66,9 +69,13 @@ export function Search() {
           {query ? <>Results for “{query}”</> : "Search"}
         </h1>
         <p className="mt-1 text-sm text-muted">
-          Keyword and meaning-based search, combined.
-          {semantic.status === "loading" && " Loading the semantic model…"}
-          {semantic.status === "error" && " (Semantic search is unavailable; showing keyword matches.)"}
+          {state.semantic
+            ? "Keyword and meaning-based search, combined."
+            : "Keyword search over section numbers and titles."}
+          {state.semantic && semantic.status === "loading" && " Loading the semantic model…"}
+          {state.semantic &&
+            semantic.status === "error" &&
+            " (Semantic search is unavailable; showing keyword matches.)"}
         </p>
       </header>
 
