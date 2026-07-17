@@ -1,6 +1,6 @@
 # WSDOT Spec Tool — Project Plan
 
-> Working name candidates: **SpecCompass**, **ClearSpec**, **SpecNavigator** (final name TBD — must read as clearly unofficial, no WSDOT branding).
+> Product name: **DOTcompass** (clearly unofficial; uses generic "DOT", no WSDOT marks — the prominent "unofficial" framing does the work).
 > Planned with Claude Fable 5 (July 2026). Implementation on Opus / Codex.
 > **Phases 0, 1, 3, 4 are built. Live site: https://jacilynh.github.io/wsdot-spec-tool/**
 > Phase 0 (corpus pipeline) validated; Spec Explorer, keyword search, and the Section
