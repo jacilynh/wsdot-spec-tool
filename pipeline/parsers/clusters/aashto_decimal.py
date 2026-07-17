@@ -6,6 +6,19 @@ divisions (100 = General Provisions, 200 = Earthwork, ...), with dot-delimited d
 subsections. One profile drives the shared engine for the entire cluster; a state joins
 it by pointing its descriptor here, not by adding code.
 
+Confirmed against three states' real 2025-2026 books with zero code beyond this profile:
+North Dakota (540 sections, Arial-Bold 13), Pennsylvania (1,430, Arial-Bold 10), and
+Missouri (6,777, Times-Bold 8) — three fonts, decimal depths from two to eight levels, and
+three- and four-digit section numbers, all recovered in strictly monotonic order with the
+catalog's named sections matched exactly. Each book also has ONE idiosyncrasy that stays a
+per-state concern rather than leaking into this shared profile:
+  * PennDOT numbers a lettered sub-level ("104.06(a)") that appears only in the running
+    header, not the body (see the note below the pattern).
+  * MoDOT numbers down to titleless paragraphs: its deepest levels ("102.2.1") are numbered
+    prose with no heading title, so ~1/3 of Missouri's captured sections hold a sentence
+    where a title would be. Whether to keep, collapse, or relabel those is a choice for the
+    Missouri build, not something the numbering profile can decide.
+
 Unlike WSDOT, section numbers are NOT guaranteed stable across editions here, so the
 history build must fall back to content alignment (`stable_numbers=False`).
 
