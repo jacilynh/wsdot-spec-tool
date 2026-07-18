@@ -188,20 +188,21 @@
     "tier": 1,
     "cluster": "aashto_decimal",
     "wave": 1,
-    "stage": "pending",
-    "capability": "none",
+    "stage": "1-parse",
+    "capability": "P0",
     "reuse": {
-      "status": "unstated",
-      "dossier": null,
+      "status": "all_rights_reserved",
+      "dossier": "doc asserts 'Copyright (c) 2023. All rights reserved.' \u2014 build-only until cleared",
       "cleared": false
     },
     "live": false,
     "source": {
       "url": "https://apps.itd.idaho.gov/Apps/manuals/SpecBook/SpecBook23.pdf",
-      "edition": "2023 Standard Specifications for Highway Construction (dated March 2023), 768 pages \u2014 kept current via annual \"Supplementals\" documents (2024, 2025, 2026 supplementals published to date)",
-      "sha256": null,
-      "verified": false,
-      "format": "single-pdf"
+      "edition": "2023",
+      "sha256": "69339d196d00011d44d89b4acf1976c9cc0fd73e1fc3d9147bf282b686f1efe7",
+      "verified": true,
+      "format": "single-pdf",
+      "path": "corpus/id/current.pdf"
     },
     "quirks": [],
     "blockers": []
