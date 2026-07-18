@@ -5,8 +5,8 @@
     "tier": 1,
     "cluster": "aashto_decimal",
     "wave": 1,
-    "stage": "pending",
-    "capability": "none",
+    "stage": "1-parse",
+    "capability": "P0",
     "reuse": {
       "status": "unstated",
       "dossier": null,
@@ -15,21 +15,24 @@
     "live": false,
     "source": {
       "url": "https://engineeringsupport.deldot.gov/images/b/b1/2026_DelDOT_Standard_Specifications.pdf",
-      "edition": "January 2026 (Revision #1 to the 2025 edition) \u2014 sometimes cited simply as the \"2025 Standard Specifications\"",
+      "edition": "January 2026",
       "sha256": null,
-      "verified": false,
-      "format": "single-pdf"
+      "verified": true,
+      "format": "single-pdf",
+      "path": "corpus/de/current.pdf"
     },
-    "quirks": [],
+    "quirks": [
+      "clean AASHTO parse: 1,320 sections, monotonic, clean titles"
+    ],
     "blockers": []
   },
   "md": {
     "state": "Maryland",
     "dot": "MDOT SHA",
     "tier": 1,
-    "cluster": "aashto_decimal",
-    "wave": 1,
-    "stage": "pending",
+    "cluster": "letter_prefix_tbd",
+    "wave": null,
+    "stage": "0-source",
     "capability": "none",
     "reuse": {
       "status": "unstated",
@@ -39,13 +42,16 @@
     "live": false,
     "source": {
       "url": "https://roads.maryland.gov/OCE/Specifications/2026%20Standard%20Specifications%20for%20Construction%20and%20Materials.pdf",
-      "edition": "2026 Standard Specifications for Construction and Materials (effective July 1, 2026)",
+      "edition": "July 2025",
       "sha256": null,
-      "verified": false,
-      "format": "single-pdf"
+      "verified": true,
+      "format": "single-pdf",
+      "path": "corpus/md/current.pdf"
     },
     "quirks": [],
-    "blockers": []
+    "blockers": [
+      "numbering is GP-1.05 letter-prefix (MDOT SHA 'GP-x.xx'), NOT aashto_decimal; catalog mislabeled it. Needs a new cluster profile \u2014 defer to a later wave."
+    ]
   },
   "mo": {
     "state": "Missouri",
@@ -63,10 +69,11 @@
     "live": false,
     "source": {
       "url": "https://www.modot.org/sites/default/files/documents/EPS%202026%20Missouri%20Standard%20Specific%20-%20MHTC%20(July%202026).pdf",
-      "edition": "2026 Missouri Standard Specifications for Highway Construction (effective October 1, 2026)",
+      "edition": "2026",
       "sha256": null,
-      "verified": false,
-      "format": "single-pdf"
+      "verified": true,
+      "format": "single-pdf",
+      "path": "corpus/mo/current.pdf"
     },
     "quirks": [
       "parse proven (6,777 sections); quirk: titleless paragraphs"
@@ -89,10 +96,11 @@
     "live": false,
     "source": {
       "url": "https://www.dot.nd.gov/sites/www/files/documents/Standard%20Specifications/2025%20NDDOT%20Standard%20Specifications%20for%20Road%20and%20Bridge%20Construction.pdf",
-      "edition": "2025 NDDOT Standard Specifications for Road and Bridge Construction",
+      "edition": "2025",
       "sha256": null,
-      "verified": false,
-      "format": "single-pdf"
+      "verified": true,
+      "format": "single-pdf",
+      "path": "corpus/nd/current.pdf"
     },
     "quirks": [
       "descriptor exists; local-only two-state demo"
@@ -115,10 +123,11 @@
     "live": false,
     "source": {
       "url": "https://www.pa.gov/content/dam/copapwp-pagov/en/penndot/documents/public/pubsforms/publications/pub_408/408_2026/408_2026_ie.pdf",
-      "edition": "Publication 408/2026, Initial Edition, effective April 10, 2026",
+      "edition": "2026",
       "sha256": null,
-      "verified": false,
-      "format": "single-pdf"
+      "verified": true,
+      "format": "single-pdf",
+      "path": "corpus/pa/current.pdf"
     },
     "quirks": [
       "parse proven (1,430 sections); quirk: header-only lettered subs"
@@ -178,7 +187,7 @@
     "dot": "ITD",
     "tier": 1,
     "cluster": "aashto_decimal",
-    "wave": null,
+    "wave": 1,
     "stage": "pending",
     "capability": "none",
     "reuse": {
