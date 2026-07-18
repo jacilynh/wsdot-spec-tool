@@ -159,8 +159,10 @@ export default {
         .join("")
         .trim();
       cost = estimateCostUsd(message.usage.input_tokens, message.usage.output_tokens);
-    } catch {
-      // Never fail silently: tell the client so it can fall back to keyword search.
+    } catch (err) {
+      // Never fail silently: log server-side for debugging (wrangler tail) and tell the
+      // client so it can fall back to keyword search — without leaking internals.
+      console.error("generation failed:", err);
       return json({ error: "generation failed" }, 502, headers);
     }
 

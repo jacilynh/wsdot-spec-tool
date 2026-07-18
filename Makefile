@@ -16,11 +16,14 @@ corpus:  ## Download all 17 editions of M 41-10 (~90 MB, public, not vendored in
 		curl -sfL -o corpus/SS$$y.pdf "$(BASE)/SS$$y.pdf" && echo ok || echo FAILED; \
 	done
 
-parse: corpus  ## Parse every edition into pipeline/out/eYYYY.json
+parse: corpus  ## Parse every edition into pipeline/out/eYYYY.json (skips ones already parsed)
 	@mkdir -p pipeline/out
 	@for y in $(EDITIONS); do \
+		test -f pipeline/out/e$$y.json && continue; \
 		$(PY) pipeline/parse_any_edition.py corpus/SS$$y.pdf pipeline/out/e$$y.json; \
 	done
+	@# Re-parse after WSDOT republishes an edition (or to pick up parser changes) with:
+	@#   make clean && make parse   — clean removes pipeline/out so all editions re-parse.
 
 history: parse  ## Build pipeline/history.json — every section's 26-year timeline
 	$(PY) pipeline/build_history.py pipeline/out pipeline/history.json
@@ -58,8 +61,8 @@ publish:  ## Build the deployable site (app/dist) — CLEARED states only, never
 	cd app && npm run build
 	@echo "==> app/dist ready (cleared states only). Deploy with: make deploy"
 
-deploy: publish  ## Publish app/dist to Cloudflare Pages (needs: cd app && npx wrangler login)
-	cd app && npx wrangler pages deploy dist --project-name=dotcompass
+deploy: publish  ## Publish app/dist to Cloudflare Pages production (needs: cd app && npx wrangler login)
+	cd app && npx wrangler pages deploy dist --project-name=dotcompass --branch=main --commit-dirty=true
 
 clean:  ## Remove generated artifacts (keeps the downloaded corpus)
 	rm -rf pipeline/out pipeline/history.json .pytest_cache **/__pycache__
