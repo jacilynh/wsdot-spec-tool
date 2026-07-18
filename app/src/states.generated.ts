@@ -6,4 +6,8 @@ import type { StateConfig } from "./states";
 export const ALL_STATES: StateConfig[] = [
   {"slug": "wa", "name": "Washington", "dot": "WSDOT", "dataBase": "data", "corpusLabel": "WSDOT Standard Specifications \u00b7 M 41-10", "edition": 2026, "history": true, "requirements": true, "ask": true, "semantic": true, "demoSection": "1-09.7"},
   {"slug": "nd", "name": "North Dakota", "dot": "NDDOT", "dataBase": "data/nd", "corpusLabel": "NDDOT Standard Specifications for Road and Bridge Construction", "edition": 2025, "history": false, "requirements": false, "ask": false, "semantic": false, "uncleared": true},
+  {"slug": "de", "name": "Delaware", "dot": "DelDOT", "dataBase": "data/de", "corpusLabel": "DelDOT Standard Specifications for Road and Bridge Construction", "edition": 2026, "history": false, "requirements": false, "ask": false, "semantic": false, "uncleared": true},
+  {"slug": "id", "name": "Idaho", "dot": "ITD", "dataBase": "data/id", "corpusLabel": "ITD Standard Specifications for Highway Construction", "edition": 2023, "history": false, "requirements": false, "ask": false, "semantic": false, "uncleared": true},
+  {"slug": "mo", "name": "Missouri", "dot": "MoDOT", "dataBase": "data/mo", "corpusLabel": "MoDOT Standard Specifications for Highway Construction", "edition": 2026, "history": false, "requirements": false, "ask": false, "semantic": false, "uncleared": true},
+  {"slug": "pa", "name": "Pennsylvania", "dot": "PennDOT", "dataBase": "data/pa", "corpusLabel": "PennDOT Specifications \u00b7 Publication 408", "edition": 2026, "history": false, "requirements": false, "ask": false, "semantic": false, "uncleared": true},
 ];

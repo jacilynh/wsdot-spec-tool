@@ -72,9 +72,11 @@ eval:  ## Measure Ask quality against worker/eval/cases.ts (ARGS=--rerank or --a
 	cd worker && npm run --silent eval -- $(ARGS)
 
 publish:  ## Build the deployable site (app/dist) — CLEARED states only, never uncleared text
-	@# The reuse gate at publish time: remove any locally-built uncleared-state data so it
-	@# can never end up in dist/. (Rebuild it for the local demo with build_state --allow-uncleared.)
-	rm -rf app/public/data/nd
+	@# The reuse gate at publish time: remove EVERY locally-built uncleared-state's data so it
+	@# can never end up in dist/. Uncleared is derived from the descriptors (reuse != public),
+	@# so this covers all Wave-N states automatically. (Rebuild demos with build_state
+	@# --allow-uncleared afterward.)
+	$(PY) pipeline/purge_uncleared.py app/public/data
 	$(MAKE) app-data
 	@# Merge any already-ingested manuals (pipeline/manuals-out/) back into the Ask corpus that
 	@# app-data just rewrote with Standard Specs only. No re-download; run `make manuals` to add more.

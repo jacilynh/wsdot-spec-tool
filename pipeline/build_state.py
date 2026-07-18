@@ -43,6 +43,10 @@ from parsers.engine import parse as parse_pdf
 STATES = {
     "wa": "states.washington:WASHINGTON",
     "nd": "states.north_dakota:NORTH_DAKOTA",
+    "de": "states.delaware:DELAWARE",
+    "id": "states.idaho:IDAHO",
+    "mo": "states.missouri:MISSOURI",
+    "pa": "states.pennsylvania:PENNSYLVANIA",
 }
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

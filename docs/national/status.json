@@ -5,7 +5,7 @@
     "tier": 1,
     "cluster": "aashto_decimal",
     "wave": 1,
-    "stage": "2-qa",
+    "stage": "3-built",
     "capability": "P0",
     "reuse": {
       "status": "unstated",
@@ -59,7 +59,7 @@
     "tier": 1,
     "cluster": "aashto_decimal",
     "wave": 1,
-    "stage": "2-qa",
+    "stage": "3-built",
     "capability": "P0",
     "reuse": {
       "status": "unstated",
@@ -113,7 +113,7 @@
     "tier": 1,
     "cluster": "aashto_decimal",
     "wave": 1,
-    "stage": "2-qa",
+    "stage": "3-built",
     "capability": "P0",
     "reuse": {
       "status": "unstated",
@@ -190,7 +190,7 @@
     "tier": 1,
     "cluster": "aashto_decimal",
     "wave": 1,
-    "stage": "2-qa",
+    "stage": "3-built",
     "capability": "P0",
     "reuse": {
       "status": "all_rights_reserved",
