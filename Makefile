@@ -1,4 +1,4 @@
-.PHONY: help corpus parse history requirements app-data embeddings test test-all lint fmt clean publish deploy
+.PHONY: help corpus parse history requirements app-data embeddings test test-all lint fmt clean publish deploy eval
 .DEFAULT_GOAL := help
 
 PY := uv run --quiet --with pymupdf --with pytest --with ruff python3
@@ -50,6 +50,9 @@ lint:  ## Check formatting and lint
 fmt:  ## Auto-format
 	$(PY) -m ruff format .
 	$(PY) -m ruff check --fix .
+
+eval:  ## Measure Ask quality against worker/eval/cases.ts (ARGS=--rerank or --answer for more)
+	cd worker && npm run --silent eval -- $(ARGS)
 
 publish:  ## Build the deployable site (app/dist) — CLEARED states only, never uncleared text
 	@# The reuse gate at publish time: remove any locally-built uncleared-state data so it
