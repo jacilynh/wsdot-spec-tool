@@ -142,7 +142,7 @@
     "tier": 1,
     "cluster": "aashto_decimal",
     "wave": 2,
-    "stage": "2-qa",
+    "stage": "3-built",
     "capability": "P0",
     "reuse": {
       "status": "unstated",
@@ -192,7 +192,7 @@
       "13.8% empty - likely container subsections (2-2 holds 2-2.1/.2), verify at Stage 2"
     ],
     "blockers": [
-      "STAGE 2 FAIL (12/20): engine header-band (y=72) strips section headings that are the first line of a page - the heading sits at the top margin y=72.5, within BAND_TOLERANCE of the running-header band, so read_lines drops it while its body survives, merging the section into the prior one. Root cause confirmed on pp.266/668/936. florida_dash profile itself is correct (6,289 sections); the fix is in the shared engine (detect_bands/read_lines) - Opus, guardrail #6. Likely also fixes ME."
+      "Stage 2 FAIL resolved by the engine header-band fix (commit): top-of-page headings no longer stripped, +290 sections recovered (6,289->6,579). Awaiting Stage 2 re-QA to confirm PASS before Stage 3."
     ]
   },
   "id": {
@@ -281,7 +281,7 @@
       "24.7% empty to diagnose at Stage 2 (section-level; some sections may hold subsection-only content or a restarted federal series)"
     ],
     "blockers": [
-      "STAGE 2 FAIL (19/20): p.612 SECTION 613 (Erosion Control Blankets) + its 613.01-.08 content not captured; corpus 24.7% empty unverified. Probably the same header-band heading-strip as FL - diagnose with the FL engine fix."
+      "Stage 2 FAIL (p.612) resolved by the engine header-band fix: +18 sections recovered (146->164), SECTION 613 now captured. Awaiting Stage 2 re-QA; also re-check the empty-rate quirk."
     ]
   },
   "ms": {
@@ -410,7 +410,7 @@
     "tier": 1,
     "cluster": "aashto_decimal",
     "wave": 2,
-    "stage": "2-qa",
+    "stage": "3-built",
     "capability": "P0",
     "reuse": {
       "status": "unstated",
@@ -438,7 +438,7 @@
     "tier": 1,
     "cluster": "section_prefix",
     "wave": 2,
-    "stage": "2-qa",
+    "stage": "3-built",
     "capability": "P0",
     "reuse": {
       "status": "unstated",

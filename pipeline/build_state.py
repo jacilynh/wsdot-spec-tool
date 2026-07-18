@@ -47,6 +47,9 @@ STATES = {
     "id": "states.idaho:IDAHO",
     "mo": "states.missouri:MISSOURI",
     "pa": "states.pennsylvania:PENNSYLVANIA",
+    "co": "states.colorado:COLORADO",
+    "tn": "states.tennessee:TENNESSEE",
+    "va": "states.virginia:VIRGINIA",
 }
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
