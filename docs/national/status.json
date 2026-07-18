@@ -1,0 +1,1208 @@
+{
+  "de": {
+    "state": "Delaware",
+    "dot": "DelDOT",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": 1,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://engineeringsupport.deldot.gov/images/b/b1/2026_DelDOT_Standard_Specifications.pdf",
+      "edition": "January 2026 (Revision #1 to the 2025 edition) \u2014 sometimes cited simply as the \"2025 Standard Specifications\"",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "md": {
+    "state": "Maryland",
+    "dot": "MDOT SHA",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": 1,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://roads.maryland.gov/OCE/Specifications/2026%20Standard%20Specifications%20for%20Construction%20and%20Materials.pdf",
+      "edition": "2026 Standard Specifications for Construction and Materials (effective July 1, 2026)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "mo": {
+    "state": "Missouri",
+    "dot": "MoDOT",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": 1,
+    "stage": "1-parse",
+    "capability": "P0",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.modot.org/sites/default/files/documents/EPS%202026%20Missouri%20Standard%20Specific%20-%20MHTC%20(July%202026).pdf",
+      "edition": "2026 Missouri Standard Specifications for Highway Construction (effective October 1, 2026)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [
+      "parse proven (6,777 sections); quirk: titleless paragraphs"
+    ],
+    "blockers": []
+  },
+  "nd": {
+    "state": "North Dakota",
+    "dot": "NDDOT",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": 1,
+    "stage": "3-built",
+    "capability": "P0",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.dot.nd.gov/sites/www/files/documents/Standard%20Specifications/2025%20NDDOT%20Standard%20Specifications%20for%20Road%20and%20Bridge%20Construction.pdf",
+      "edition": "2025 NDDOT Standard Specifications for Road and Bridge Construction",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [
+      "descriptor exists; local-only two-state demo"
+    ],
+    "blockers": []
+  },
+  "pa": {
+    "state": "Pennsylvania",
+    "dot": "PennDOT",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": 1,
+    "stage": "1-parse",
+    "capability": "P0",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.pa.gov/content/dam/copapwp-pagov/en/penndot/documents/public/pubsforms/publications/pub_408/408_2026/408_2026_ie.pdf",
+      "edition": "Publication 408/2026, Initial Edition, effective April 10, 2026",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [
+      "parse proven (1,430 sections); quirk: header-only lettered subs"
+    ],
+    "blockers": []
+  },
+  "co": {
+    "state": "Colorado",
+    "dot": "CDOT",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.codot.gov/business/designsupport/cdot-construction-specifications/2025-construction-specifications/specs-book/2025-cdot-specs-book.pdf",
+      "edition": "2025 Standard Specifications for Road and Bridge Construction, Version 1 (mandatory for projects advertised on/after July 1, 2025; supersedes the 2023 edition, which had been mandatory since October 1, 2023)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "fl": {
+    "state": "Florida",
+    "dot": "FDOT",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://fdotwww.blob.core.windows.net/sitefinity/docs/default-source/specifications/by-year/fy-2026-27/ebook/fy-2026-27-ebook-compressed.pdf?sfvrsn=be872b87_2",
+      "edition": "FY 2026-27 Standard Specifications for Road and Bridge Construction (effective 07/01/2026)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "id": {
+    "state": "Idaho",
+    "dot": "ITD",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://apps.itd.idaho.gov/Apps/manuals/SpecBook/SpecBook23.pdf",
+      "edition": "2023 Standard Specifications for Highway Construction (dated March 2023), 768 pages \u2014 kept current via annual \"Supplementals\" documents (2024, 2025, 2026 supplementals published to date)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "in": {
+    "state": "Indiana",
+    "dot": "INDOT",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "all_rights_reserved",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.in.gov/dot/div/contracts/standards/book/sep25/2026%20Standard%20Specifications.pdf",
+      "edition": "2026 (effective Sept 1, 2025 \u2013 Aug 31, 2027)",
+      "sha256": null,
+      "verified": false,
+      "format": "per-division-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "me": {
+    "state": "Maine",
+    "dot": "MaineDOT",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.maine.gov/dot/sites/maine.gov.dot/files/inline-files/MaineDOT_Standard_Specifications_March_2026.pdf",
+      "edition": "March 2026 Edition (required for contracts advertised after August 1, 2026; purple cover, white/gold lettering). The March 2020 Edition (red cover) remains in effect for contracts advertised before that date.",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "ms": {
+    "state": "Mississippi",
+    "dot": "MDOT",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://mdot.ms.gov/documents/Construction/Specifications/2017%20Standard%20Specifications.pdf",
+      "edition": "2017 Edition (Mississippi Standard Specifications for Road and Bridge Construction) \u2014 approved and adopted by the Mississippi Transportation Commission on November 8, 2016; still the current controlling edition as of 2026 (referenced in 2023\u20132025 MDOT bid proposals/special provisions), supplemented on individual contracts by Special Provisions and Interim Specifications rather than a full re-issue.",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "ne": {
+    "state": "Nebraska",
+    "dot": "NDOT",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://dot.nebraska.gov/media/g4qp4y0d/2017-specbook.pdf",
+      "edition": "2017 Edition (still current as of July 2026 \u2014 9 years without a full revision; amended via supplemental specifications/special provisions)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "oh": {
+    "state": "Ohio",
+    "dot": "ODOT",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.dot.state.oh.us/Divisions/ConstructionMgt/OnlineDocs/Pages/2023-Online-Spec-Book.aspx",
+      "edition": "2023 Construction and Material Specifications (C&MS / \"Spec Book\"), effective with supplemental specifications/supplements last updated January 17, 2025 (updates continuing into 2026)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "ri": {
+    "state": "Rhode Island",
+    "dot": "RIDOT",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "all_rights_reserved",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.dot.ri.gov/business/bluebook/docs/Blue_Book_02_2026.pdf",
+      "edition": "February 2026 edition (Blue_Book_02_2026.pdf)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "sc": {
+    "state": "South Carolina",
+    "dot": "SCDOT",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "all_rights_reserved",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.scdot.org/content/dam/scdot-legacy/business/pdf/2025_SCDOT_Standard_Specifications.pdf",
+      "edition": "2025 Standard Specifications for Highway Construction",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "tn": {
+    "state": "Tennessee",
+    "dot": "TDOT",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.tn.gov/content/dam/tn/tdot/construction/2026-standard-specifications/April_1_2026_Standard_Specifications.pdf",
+      "edition": "April 1, 2026 Standard Specifications for Road and Bridge Construction (effective for contracts let beginning May 8, 2026 bid letting)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "va": {
+    "state": "Virginia",
+    "dot": "VDOT",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.vdot.virginia.gov/media/vdotvirginiagov/doing-business/technical-guidance-and-support/technical-guidance-documents/construction/VDOT_2020_RB_Specs_acc071522.pdf",
+      "edition": "2020 Road and Bridge Specifications (effective for advertisements from July 2020 onward), with a 2022 Supplement issued covering revisions through December 31, 2021. A \"Latest Specs\" zip archive is kept current with individually revised pages/divisions.",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "wv": {
+    "state": "West Virginia",
+    "dot": "WVDOT (WV Division of Highways / WVDOH)",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://transportation.wv.gov/highways/TechnicalSupport/specifications/Documents/2023_Standard_(12-16-22).pdf",
+      "edition": "2023 Standard Specifications Roads and Bridges (dated 12-16-22), updated annually via Supplemental Specifications \u2014 2024, 2025, and a 2026 Supplemental Specifications (effective for projects let after 2/12/2026) are layered on top of the 2023 base book rather than a new full edition being issued",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "wy": {
+    "state": "Wyoming",
+    "dot": "WYDOT",
+    "tier": 1,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "all_rights_reserved",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.dot.state.wy.us/files/live/sites/wydot/files/shared/Construction/2021%20Standard%20Specifications/Wyoming%202021%20Standard%20Specifications%20for%20Road%20and%20Bridge%20Construction.pdf",
+      "edition": "2021 Edition (adopted by the Transportation Commission of Wyoming, August 20, 2020)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "al": {
+    "state": "Alabama",
+    "dot": "ALDOT",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.dot.state.al.us/publications/Construction/pdf/Specifications/2026/2026_SPEC_BOOK_FINAL_PDF_COPY_11-19-25.pdf",
+      "edition": "2026 Edition (effective 01/01/2026, used beginning the January 30, 2026 letting)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "ak": {
+    "state": "Alaska",
+    "dot": "ADOT&PF (Alaska DOT&PF)",
+    "tier": null,
+    "cluster": null,
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://dot.alaska.gov/stwddes/dcsspecs/assets/pdf/hwyspecs/sshc2020.pdf",
+      "edition": "2020 Edition (Standard Specifications for Highway Construction), published 02/24/2020, still current as of July 2026 per the DOT&PF specs page; a parallel 2020 Standard Specifications for Airport Construction also exists",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "az": {
+    "state": "Arizona",
+    "dot": "ADOT",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "all_rights_reserved",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://azdot.gov/sites/default/files/media/2021/04/2021_Standard_Specifications_for_Road_and_Bridge_Construction_PC.pdf",
+      "edition": "2021 Edition (Standard Specifications for Road and Bridge Construction), amended by monthly/bimonthly \"Stored Specifications\" supplements",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "ar": {
+    "state": "Arkansas",
+    "dot": "ArDOT (formerly AHTD)",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://media.ark.org/ardot/2014SpecBook.pdf",
+      "edition": "2014 Edition (\"Arkansas 2014 Standard Specifications for Highway Construction\"), with Errata (Rev. 9/13/18) and a large, continuously growing set of Supplemental Specifications/Special Provisions (latest seen dated 2/27/2025) that amend it in place of a new edition",
+      "sha256": null,
+      "verified": false,
+      "format": "per-division-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "ca": {
+    "state": "California",
+    "dot": "Caltrans",
+    "tier": null,
+    "cluster": null,
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://dot.ca.gov/-/media/dot-media/programs/design/documents/2025_stdspecs.pdf",
+      "edition": "2025 Edition (Standard Specifications, published/posted with the 2025 Standard Plans and Contract Item Codes; a 2026 edition is already scheduled for implementation October 19, 2026)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "ct": {
+    "state": "Connecticut",
+    "dot": "CTDOT",
+    "tier": null,
+    "cluster": null,
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://portal.ct.gov/dot/-/media/dot/aec/form_819-with-january-2025.pdf",
+      "edition": "Form 819 (2024 base edition), with Supplemental Specifications through January 2026",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "ga": {
+    "state": "Georgia",
+    "dot": "GDOT",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.dot.ga.gov/PartnerSmart/Business/Source/specs/2021StandardSpecifications.pdf",
+      "edition": "2021 Standard Specifications, as modified by 2024 Edition Supplemental Specifications (effective April 19, 2024)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "hi": {
+    "state": "Hawaii",
+    "dot": "HDOT",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://hidot.hawaii.gov/highways/s2005-standard-specifications/2005-standard-specifications/",
+      "edition": "2005 Standard Specifications for Road and Bridge Construction",
+      "sha256": null,
+      "verified": false,
+      "format": "per-division-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "il": {
+    "state": "Illinois",
+    "dot": "IDOT",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://public.powerdms.com/IDOT/documents/1945348/Standard%20Specifications%20for%20Road%20and%20Bridge%20Construction%202022",
+      "edition": "2022 Standard Specifications (adopted January 1, 2022), currently in effect together with the January 2026 Supplemental Specifications and Recurring Special Provisions",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "ia": {
+    "state": "Iowa",
+    "dot": "Iowa DOT",
+    "tier": null,
+    "cluster": null,
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://ia.iowadot.gov/specifications/standard_specifications/Standard_Specifications_2023.pdf",
+      "edition": "Series 2023 (October 2023 base text), continuously amended via General Supplemental Specifications (GS) released each April and October \u2014 current GS release referenced was GS-23005, effective October 21, 2025, with the Electronic Reference Library (ERL) showing an April 21, 2026 update as the most current snapshot seen.",
+      "sha256": null,
+      "verified": false,
+      "format": "per-division-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "ks": {
+    "state": "Kansas",
+    "dot": "KDOT",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.ksdot.gov/home/showpublisheddocument/5233/638941537050330000",
+      "edition": "2015 Edition (still current as of July 2026, with numerous errata/special-provision revisions applied on top, e.g. errata sheet \"15-ER-1-R23\")",
+      "sha256": null,
+      "verified": false,
+      "format": "per-division-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "ky": {
+    "state": "Kentucky",
+    "dot": "KYTC",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://transportation.ky.gov/Construction/Standard%20amd%20Supplemental%20Specifications/Complete%20KYTC%20Standard%20Specifications%20-%202026.pdf",
+      "edition": "Edition of 2026 (released Dec 19, 2025; effective with January 2026 letting)",
+      "sha256": null,
+      "verified": false,
+      "format": "per-division-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "la": {
+    "state": "Louisiana",
+    "dot": "DOTD (Louisiana Dept. of Transportation and Development)",
+    "tier": null,
+    "cluster": null,
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://dotd.la.gov/media/s5lbix3y/2026-lssrb.pdf",
+      "edition": "2026 Louisiana Standard Specifications for Roads and Bridges (LSSRB)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "ma": {
+    "state": "Massachusetts",
+    "dot": "MassDOT",
+    "tier": null,
+    "cluster": null,
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.mass.gov/doc/2026-standard-specifications-for-highways-and-bridges-division-i-general-requirements-and-covenants/download",
+      "edition": "2026 Edition (issued by MassDOT Highway Division; combines the 2025 edition plus all 2025 supplemental specifications; referenced in contracts advertised on/after February 21, 2026, alongside the January 2026 Construction Standard Detail Drawings)",
+      "sha256": null,
+      "verified": false,
+      "format": "per-division-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "mi": {
+    "state": "Michigan",
+    "dot": "MDOT",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "all_rights_reserved",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.michigan.gov/mdot/-/media/Project/Websites/MDOT/Business/Construction/Standard-Specifications-Construction/2020-Standard-Specifications-Construction.pdf",
+      "edition": "2020 Standard Specifications for Construction (with Errata incorporated)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "mn": {
+    "state": "Minnesota",
+    "dot": "MnDOT",
+    "tier": null,
+    "cluster": null,
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://mdl.mndot.gov/items/m17795",
+      "edition": "2025 Edition (effective for most projects let on or after Oct. 22, 2025)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "mt": {
+    "state": "Montana",
+    "dot": "MDT",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.mdt.mt.gov/other/webdata/external/const/specifications/2025/2026-SPEC-BOOK-JAN.pdf",
+      "edition": "2025 Edition, as revised January 2026 (file labeled \"2026-SPEC-BOOK-JAN.pdf\", effective January 15, 2026); supersedes the June 2025 revision of the same 2025 Edition",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "nv": {
+    "state": "Nevada",
+    "dot": "NDOT",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "http://epubs.nsla.nv.gov/statepubs/epubs/642529-2014.pdf",
+      "edition": "2014 (2014 Standard Specifications for Road and Bridge Construction) \u2014 still the only edition listed under \"CURRENT\" as of the most recent snapshot checked (April 2026)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "nh": {
+    "state": "New Hampshire",
+    "dot": "NHDOT",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.dot.nh.gov/sites/g/files/ehbemt811/files/inline-documents/2016-nhdot-spec-book.pdf",
+      "edition": "2016 Edition (March 2016), Standard Specifications for Road and Bridge Construction \u2014 actively amended via \"Supplemental Specifications\" (most recently updated June 2024)",
+      "sha256": null,
+      "verified": false,
+      "format": "per-division-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "nj": {
+    "state": "New Jersey",
+    "dot": "NJDOT",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "all_rights_reserved",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://dot.nj.gov/transportation/eng/specs/2019/Division.shtml",
+      "edition": "2019 Standard Specifications for Road and Bridge Construction (continuously amended by Baseline Document Changes/BDCs; the posted PDF is a living document folding in all BDCs to date)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "nm": {
+    "state": "New Mexico",
+    "dot": "NMDOT",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://api.realfile.rtsclients.com/PublicFiles/f260a66b364d453e91ff9b3fedd494dc/fcd4d178-70ff-4a21-8ea5-2bede74c831b/2019%20Specs%20for%20Highway%20and%20Bridge%20Construction",
+      "edition": "2019 Edition (still current as of July 2026; a 2019 Standard Special Provisions supplement is also posted)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "ny": {
+    "state": "New York",
+    "dot": "NYSDOT",
+    "tier": null,
+    "cluster": null,
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.dot.ny.gov/main/business-center/engineering/specifications/busi-e-standards-usc",
+      "edition": "2026 (rolling triennial-updates system; effective editions dated Jan 1, May 1, and Sep 1 each year \u2014 current is the \"2026_1\" release dated January 1, 2026)",
+      "sha256": null,
+      "verified": false,
+      "format": "per-division-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "nc": {
+    "state": "North Carolina",
+    "dot": "NCDOT",
+    "tier": null,
+    "cluster": null,
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://connect.ncdot.gov/resources/Specifications/2024StandardSpecifications/2024%20Standard%20Specifications%20for%20Roads%20and%20Structures.pdf",
+      "edition": "2024 Standard Specifications for Roads and Structures (effective with January 2024 lettings)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "ok": {
+    "state": "Oklahoma",
+    "dot": "ODOT",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://oklahoma.gov/content/dam/ok/en/odot/documents/c-manuals/specbook/2019-full-spec-web-version.pdf",
+      "edition": "2019 Standard Specifications for Highway Construction (with errata revised as recently as June 2025)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "or": {
+    "state": "Oregon",
+    "dot": "ODOT",
+    "tier": null,
+    "cluster": null,
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.oregon.gov/odot/Business/Specs/2024_STANDARD_SPECIFICATIONS.pdf",
+      "edition": "2024 Standard Specifications for Construction (effective for bids on/after Dec 1, 2023; next edition planned for 2028, 2027 update paused)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "sd": {
+    "state": "South Dakota",
+    "dot": "SDDOT",
+    "tier": null,
+    "cluster": null,
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "all_rights_reserved",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://dot.sd.gov/media/035a1wt1/2025-sddot-specbook-final.pdf",
+      "edition": "2025 Standard Specifications for Roads and Bridges (Version 10-1-2025); governs projects let October 1, 2025 and after",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "tx": {
+    "state": "Texas",
+    "dot": "TxDOT",
+    "tier": null,
+    "cluster": null,
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.txdot.gov/content/dam/docs/specifications/2024/spec-book-0924.pdf",
+      "edition": "2024 Standard Specifications (spec book dated 09/2024; effective for projects letting September 2024 and later; supersedes the 2014 edition)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "ut": {
+    "state": "Utah",
+    "dot": "UDOT",
+    "tier": null,
+    "cluster": null,
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://drive.google.com/drive/folders/1tqQ_X1DnD8WaIPiWJXKESWFtUKLfvXhE?usp=drive_link",
+      "edition": "UDOT now publishes a new edition every year rather than every 4 years; as of July 2026 the \"2027,\" \"2026,\" and \"2025\" Standard Specification and Drawing Books are all posted simultaneously (each keyed to the construction year it governs, released the prior May). The 2027 edition is the newest/forward-looking one; 2026 is the edition governing current-year construction.",
+      "sha256": null,
+      "verified": false,
+      "format": "per-division-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "vt": {
+    "state": "Vermont",
+    "dot": "VTrans",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://outside.vermont.gov/agency/VTRANS/external/docs/construction/02ConstrServ/PreContract/2024%20Spec%20Book/2024%20Standard%20Specifications%20for%20Construction.pdf",
+      "edition": "2024 Standard Specifications for Construction (adopted June 2023)",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "wa": {
+    "state": "Washington",
+    "dot": "WSDOT",
+    "tier": null,
+    "cluster": null,
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "unstated",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://www.wsdot.wa.gov/publications/manuals/fulltext/M41-10/SS2026.pdf",
+      "edition": "2026 Standard Specifications for Road, Bridge, and Municipal Construction, Publication M 41-10",
+      "sha256": null,
+      "verified": false,
+      "format": "single-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  },
+  "wi": {
+    "state": "Wisconsin",
+    "dot": "WisDOT",
+    "tier": null,
+    "cluster": "aashto_decimal",
+    "wave": null,
+    "stage": "pending",
+    "capability": "none",
+    "reuse": {
+      "status": "all_rights_reserved",
+      "dossier": null,
+      "cleared": false
+    },
+    "live": false,
+    "source": {
+      "url": "https://wisconsindot.gov/rdwy/stndspec/mob-down/25stndspec.zip",
+      "edition": "2025 Edition (effective with the November 2024 letting)",
+      "sha256": null,
+      "verified": false,
+      "format": "per-division-pdf"
+    },
+    "quirks": [],
+    "blockers": []
+  }
+}
