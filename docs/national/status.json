@@ -5,7 +5,7 @@
     "tier": 1,
     "cluster": "aashto_decimal",
     "wave": 1,
-    "stage": "1-parse",
+    "stage": "2-qa",
     "capability": "P0",
     "reuse": {
       "status": "unstated",
@@ -22,7 +22,7 @@
       "path": "corpus/de/current.pdf"
     },
     "quirks": [
-      "clean AASHTO parse: 1,320 sections, monotonic, clean titles"
+      "X.3 container sections empty; content in child subsections (4.9% empty, faithful)"
     ],
     "blockers": []
   },
@@ -59,7 +59,7 @@
     "tier": 1,
     "cluster": "aashto_decimal",
     "wave": 1,
-    "stage": "1-parse",
+    "stage": "2-qa",
     "capability": "P0",
     "reuse": {
       "status": "unstated",
@@ -76,7 +76,7 @@
       "path": "corpus/mo/current.pdf"
     },
     "quirks": [
-      "parse proven (6,777 sections); quirk: titleless paragraphs"
+      "titleless paragraphs (30.7% absorbed titles) \u2014 quirk not bug; supplemental appendix duplicates dedup'd"
     ],
     "blockers": []
   },
@@ -132,7 +132,9 @@
     "quirks": [
       "parse proven (1,430 sections); quirk: header-only lettered subs"
     ],
-    "blockers": []
+    "blockers": [
+      "STAGE 2 FAIL: engine drops the first sentence when body shares the heading's physical line (em-dash style). 102/1430 sections empty, 29% start mid-sentence. Needs slice_sections fix."
+    ]
   },
   "co": {
     "state": "Colorado",
@@ -188,7 +190,7 @@
     "tier": 1,
     "cluster": "aashto_decimal",
     "wave": 1,
-    "stage": "1-parse",
+    "stage": "2-qa",
     "capability": "P0",
     "reuse": {
       "status": "all_rights_reserved",
@@ -204,7 +206,9 @@
       "format": "single-pdf",
       "path": "corpus/id/current.pdf"
     },
-    "quirks": [],
+    "quirks": [
+      "two-level numbering: only SSS.NN numbered, deeper outline folded in (per ITD 101.02)"
+    ],
     "blockers": []
   },
   "in": {
