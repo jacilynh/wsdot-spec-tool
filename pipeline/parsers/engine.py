@@ -34,6 +34,7 @@ Nothing here knows what a WSDOT number looks like; that is the `SpecProfile`'s j
 
 import re
 from collections import Counter
+from statistics import median
 
 import fitz  # pymupdf
 
@@ -42,26 +43,54 @@ WEIGHT = re.compile(r"bold|heavy|black|semibold", re.I)  # the era-specific weig
 
 BAND_TOLERANCE = 3.0
 SUBSTANTIVE = 40  # chars of prose under a heading for it to count as a real section
+SEP_RATIO = 1.35  # a header/footer line is separated from the body by > this * line pitch
 
 
 def detect_bands(doc):
-    """The y-coordinates of the running header and footer, measured not assumed."""
-    firsts, lasts = Counter(), Counter()
-    for pno in range(10, min(doc.page_count, 210)):
-        ys = [
-            line["spans"][0]["bbox"][1]
-            for block in doc[pno].get_text("dict")["blocks"]
-            for line in block.get("lines", [])
-            if line.get("spans") and line["spans"][0]["text"].strip()
-        ]
-        if ys:
-            firsts[round(min(ys))] += 1
-            lasts[round(max(ys))] += 1
+    """The y-coordinates of the running header and footer, measured not assumed.
 
-    return (
-        firsts.most_common(1)[0][0] if firsts else -99,
-        lasts.most_common(1)[0][0] if lasts else 99999,
-    )
+    The band is the modal first-line (last-line) y, exactly as before — so every book with a
+    real running header keeps the identical band. The one addition: a real running header sits
+    in the margin, separated from the body by a gap larger than the body's line pitch. Some
+    books print no running header (FDOT, MaineDOT); their first line is simply the top text
+    margin, flowing straight into the body. There the modal min-y is NOT a header — and a
+    section heading that opens at the top of such a page must not be stripped as if it were one
+    (the FDOT y=72 bug). So after measuring the modal band we check whether it is actually
+    separated (median top/bottom gap > SEP_RATIO * pitch on the pages that sit at it); if not,
+    the band is dropped to a sentinel and nothing is stripped there. A genuinely separated
+    header/footer (every WSDOT edition, every AASHTO book) is unchanged.
+    """
+    firsts, lasts = Counter(), Counter()
+    top_gap, bot_gap = {}, {}  # band position -> gap ratios measured on pages sitting at it
+    for pno in range(10, min(doc.page_count, 210)):
+        ys = sorted(
+            {
+                round(line["spans"][0]["bbox"][1], 1)
+                for block in doc[pno].get_text("dict")["blocks"]
+                for line in block.get("lines", [])
+                if line.get("spans") and line["spans"][0]["text"].strip()
+            }
+        )
+        if len(ys) < 4:
+            continue
+        pitch = median(ys[i + 1] - ys[i] for i in range(len(ys) - 1)) or 1.0
+        lo, hi = round(ys[0]), round(ys[-1])
+        firsts[lo] += 1
+        lasts[hi] += 1
+        top_gap.setdefault(lo, []).append((ys[1] - ys[0]) / pitch)
+        bot_gap.setdefault(hi, []).append((ys[-1] - ys[-2]) / pitch)
+
+    def band(counter, gaps, sentinel):
+        if not counter:
+            return sentinel
+        position = counter.most_common(1)[0][0]
+        # keep the band only if the line at it is a separated margin header/footer, not the
+        # top/bottom of a continuous text block (which would be real content, e.g. a heading).
+        if median(gaps[position]) <= SEP_RATIO:
+            return sentinel
+        return position
+
+    return band(firsts, top_gap, -99), band(lasts, bot_gap, 99999)
 
 
 def read_lines(doc, header_y, footer_y):
