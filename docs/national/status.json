@@ -142,8 +142,8 @@
     "tier": 1,
     "cluster": "aashto_decimal",
     "wave": 2,
-    "stage": "0-source",
-    "capability": "none",
+    "stage": "2-qa",
+    "capability": "P0",
     "reuse": {
       "status": "unstated",
       "dossier": null,
@@ -159,16 +159,18 @@
       "path": "corpus/co/current.pdf",
       "pages": 967
     },
-    "quirks": [],
+    "quirks": [
+      "STAGE 2 PASS 20/20: 1,085 sections. The 75.6% lowercase-start is COSMETIC (title captures the first physical line, body continues on the next) - title+head reproduces the source exactly, no text lost (opposite of the PA em-dash bug)."
+    ],
     "blockers": []
   },
   "fl": {
     "state": "Florida",
     "dot": "FDOT",
     "tier": 1,
-    "cluster": "florida_dash_tbd",
+    "cluster": "florida_dash",
     "wave": 2,
-    "stage": "0-source",
+    "stage": "1-parse",
     "capability": "none",
     "reuse": {
       "status": "unstated",
@@ -185,9 +187,12 @@
       "path": "corpus/fl/current.pdf",
       "pages": 1339
     },
-    "quirks": [],
+    "quirks": [
+      "Stage 1: 6,289 sections on the NEW florida_dash profile, monotonic; N-M.K dash scheme (1-1, 2-2.1, 105-8)",
+      "13.8% empty - likely container subsections (2-2 holds 2-2.1/.2), verify at Stage 2"
+    ],
     "blockers": [
-      "numbering is FDOT dash scheme (e.g. 105-8), NOT aashto_decimal; supervisor builds a new SpecProfile at Stage 1 (Opus-only, guardrail #6)"
+      "STAGE 2 FAIL (12/20): engine header-band (y=72) strips section headings that are the first line of a page - the heading sits at the top margin y=72.5, within BAND_TOLERANCE of the running-header band, so read_lines drops it while its body survives, merging the section into the prior one. Root cause confirmed on pp.266/668/936. florida_dash profile itself is correct (6,289 sections); the fix is in the shared engine (detect_bands/read_lines) - Opus, guardrail #6. Likely also fixes ME."
     ]
   },
   "id": {
@@ -223,7 +228,7 @@
     "tier": 1,
     "cluster": "aashto_decimal",
     "wave": 2,
-    "stage": "0-source",
+    "stage": "1-parse",
     "capability": "none",
     "reuse": {
       "status": "all_rights_reserved",
@@ -240,18 +245,21 @@
       "path": "corpus/in/current.pdf",
       "pages": 1328
     },
-    "quirks": [],
+    "quirks": [
+      "Stage 1: 1,687 sections, monotonic, bands 100-900, ~0% empty/lowercase - clean AASHTO",
+      "single combined book (not per-division as catalog implied)"
+    ],
     "blockers": [
-      "catalog said per-division; the DOT's own URL serves a single combined 1,328p 2026 book \u2014 single-PDF path applies"
+      "STAGE 2 FAIL (19/20): source PDF has partial font-encoding corruption (Caesar +3 shift on some fonts/pages, e.g. p.464 heading '(TXLSPHQW' decodes to 'Equipment'); corrupted headings/body are unreadable and dropped. Source-PDF pathology, not a parser bug - needs a font-remap/decode step or deferral. aashto_decimal profile is otherwise correct (1,687 sections)."
     ]
   },
   "me": {
     "state": "Maine",
     "dot": "MaineDOT",
     "tier": 1,
-    "cluster": "aashto_decimal",
+    "cluster": "section_prefix",
     "wave": 2,
-    "stage": "0-source",
+    "stage": "1-parse",
     "capability": "none",
     "reuse": {
       "status": "unstated",
@@ -268,8 +276,13 @@
       "path": "corpus/me/current.pdf",
       "pages": 944
     },
-    "quirks": [],
-    "blockers": []
+    "quirks": [
+      "Stage 1: 146 sections on the NEW section_prefix profile, monotonic",
+      "24.7% empty to diagnose at Stage 2 (section-level; some sections may hold subsection-only content or a restarted federal series)"
+    ],
+    "blockers": [
+      "STAGE 2 FAIL (19/20): p.612 SECTION 613 (Erosion Control Blankets) + its 613.01-.08 content not captured; corpus 24.7% empty unverified. Probably the same header-band heading-strip as FL - diagnose with the FL engine fix."
+    ]
   },
   "ms": {
     "state": "Mississippi",
@@ -397,8 +410,8 @@
     "tier": 1,
     "cluster": "aashto_decimal",
     "wave": 2,
-    "stage": "0-source",
-    "capability": "none",
+    "stage": "2-qa",
+    "capability": "P0",
     "reuse": {
       "status": "unstated",
       "dossier": null,
@@ -414,17 +427,19 @@
       "path": "corpus/tn/current.pdf",
       "pages": 1078
     },
-    "quirks": [],
+    "quirks": [
+      "STAGE 2 PASS 20/20: 1,142 sections, clean AASHTO. Quirk: running header (section+page stamp) inconsistently populated - cosmetic, parser doesn't rely on it."
+    ],
     "blockers": []
   },
   "va": {
     "state": "Virginia",
     "dot": "VDOT",
     "tier": 1,
-    "cluster": "aashto_decimal",
+    "cluster": "section_prefix",
     "wave": 2,
-    "stage": "0-source",
-    "capability": "none",
+    "stage": "2-qa",
+    "capability": "P0",
     "reuse": {
       "status": "unstated",
       "dossier": null,
@@ -440,7 +455,9 @@
       "path": "corpus/va/current.pdf",
       "pages": 1065
     },
-    "quirks": [],
+    "quirks": [
+      "STAGE 2 PASS 20/20: 160 sections on section_prefix. VDOT prints decimal labels (103.01) as inline subsection markers, correctly folded into the parent SECTION's text (section-level granularity is the book's own)."
+    ],
     "blockers": []
   },
   "wv": {

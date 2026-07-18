@@ -6,9 +6,11 @@ new cluster by importing its profile here.
 """
 
 from parsers.clusters.aashto_decimal import AASHTO
+from parsers.clusters.florida_dash import FLORIDA
+from parsers.clusters.section_prefix import SECTION_PREFIX
 from parsers.clusters.wsdot_hyphen import WSDOT
 
-PROFILES = {profile.cluster: profile for profile in (WSDOT, AASHTO)}
+PROFILES = {profile.cluster: profile for profile in (WSDOT, AASHTO, FLORIDA, SECTION_PREFIX)}
 
 
 def get_profile(cluster):
