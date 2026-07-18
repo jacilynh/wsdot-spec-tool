@@ -27,6 +27,10 @@ That's the idea. **A spec section is not a fact. It's a decision with a history.
 
 Everything is grounded: each answer, requirement, and finding links to the exact section and its verbatim text. Nothing is asserted that you can't click through and check.
 
+### Ask the specifications
+
+Ask a plain-English question and get an answer drawn **only** from the current edition, with every point cited to a section you can open and verify — and a plain "I couldn't find that in the specifications" when the answer isn't there. It won't bluff. Under the hood it's a rate-limited, spend-capped Cloudflare Worker that receives only your *question*, never a document; if it's unavailable or over its monthly cap, the page falls back to keyword search, so you always get something useful. It's optional — see [DEPLOY.md](DEPLOY.md) to run your own.
+
 ## Why it's built this way
 
 Three decisions are load-bearing, and forks should understand them before changing them:
@@ -55,7 +59,7 @@ Everything expensive happens once, at build time. What ships is static files plu
             │  static JSON, int8 embeddings, self-hosted model (git-ignored)
             ▼
   ┌───────────────────────────────────────────────────────────────┐
-  │ app/  (React + TypeScript, static SPA on GitHub Pages)         │  RUN TIME
+  │ app/  (React + TypeScript, static SPA on Cloudflare Pages)     │  RUN TIME
   │   Explorer · Section History · Requirements · Draft scanner    │  (the browser)
   │   Hybrid search  ── keyword + in-browser semantic (WASM)       │
   └───────────────────────────────────────────────────────────────┘
