@@ -21,6 +21,16 @@ export const EMBED_MODEL = "@cf/baai/bge-base-en-v1.5";
 const QUERY_INSTRUCTION = "Represent this sentence for searching relevant passages: ";
 const RRF_K = 60; // Reciprocal Rank Fusion constant; higher flattens the rank weighting
 
+// Similarity floor: drop semantic hits below this cosine score. Semantic search always
+// returns nearest neighbours, so without a floor a foreign question ("best pizza in Seattle")
+// retrieves weakly-related chunks and gets answered instead of refused — the opposite of
+// BM25, which returns nothing. Chosen from data: genuine questions score ~0.67-0.71 at the
+// top, clearly-foreign ones ~0.49, so 0.55 sits safely between. A question whose content
+// genuinely overlaps the manuals (e.g. asking for a weather forecast, when the manuals
+// discuss weather's effect on work) can still clear the floor — that's an inherent limit of
+// content-overlap, not something a threshold fixes. Tune against the eval's oos- cases.
+const SEMANTIC_FLOOR = 0.55;
+
 /** The Cloudflare bindings this module needs, typed minimally so it doesn't depend on a
  *  particular @cloudflare/workers-types version. */
 export interface SemanticEnv {
@@ -56,6 +66,7 @@ export async function semanticSearch(
     const res = await env.VECTORIZE.query(queryVector, { topK });
     const hits: ScoredChunk[] = [];
     for (const match of res.matches ?? []) {
+      if (match.score < SEMANTIC_FLOOR) continue; // too weak to be a real match — likely off-topic
       const idx = Number(match.id);
       const p = prepared[idx];
       if (p) hits.push({ ...p.chunk, score: match.score, idx });

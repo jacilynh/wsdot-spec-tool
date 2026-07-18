@@ -126,4 +126,13 @@ export const CASES: EvalCase[] = [
     expect: [],
     outOfScope: true,
   },
+  {
+    // Clearly foreign — nothing in the manuals is close. The similarity floor should make
+    // semantic contribute nothing here, so the worker refuses. (Contrast the weather case,
+    // whose content genuinely overlaps the manuals and can clear the floor.)
+    id: "oos-unrelated",
+    question: "What is the best pizza restaurant in Seattle?",
+    expect: [],
+    outOfScope: true,
+  },
 ];
