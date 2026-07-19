@@ -30,10 +30,10 @@
     "state": "Maryland",
     "dot": "MDOT SHA",
     "tier": 1,
-    "cluster": "letter_prefix_reverse_tbd",
-    "wave": null,
-    "stage": "0-source",
-    "capability": "none",
+    "cluster": "letter_prefix_reverse",
+    "wave": 3,
+    "stage": "3-built",
+    "capability": "P0",
     "reuse": {
       "status": "unstated",
       "dossier": null,
@@ -48,10 +48,12 @@
       "format": "single-pdf",
       "path": "corpus/md/current.pdf"
     },
-    "quirks": [],
-    "blockers": [
-      "letter_prefix cluster now exists (built for RIDOT) but MDOT SHA is the REVERSE shape: its lettered parts (GP/TC) come BEFORE the numeric technical body, so it needs a lettered-first ordering variant. A plain letter_prefix parse captures MD's 3,095 numeric sections but drops the GP/TC front matter. Defer until the variant is built."
-    ]
+    "quirks": [
+      "STAGE 2 PASS 22/22 on the NEW letter_prefix_reverse profile: 3,261 sections. Captures BOTH the letter-prefixed GP (General Provisions) and TC (Terms and Conditions) front matter AND the numeric technical body (100-900) - MDOT SHA is the reverse of RIDOT (lettered parts first, numeric body second).",
+      "GP/TC get synthetic int division bands (GP=1198, TC=1523) via base-26 encoding - no app change.",
+      "empty 4.8% = container/pay-item titles; lowercase 8.9% = MDOT SHA sentence-case deep-tier subsection titles (genuine convention); no spurious sections from cross-ref noise."
+    ],
+    "blockers": []
   },
   "mo": {
     "state": "Missouri",

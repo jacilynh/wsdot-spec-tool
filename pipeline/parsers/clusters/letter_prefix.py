@@ -29,24 +29,41 @@ _PARTS = re.compile(r"^([A-Z]*)-?(\d+(?:\.\d+)*)$")
 
 def _band(num):
     """Division band as an int: a numeric section -> its hundred (100..900); a lettered one ->
-    1000 + the sum of its letters' alphabet positions, so lettered parts sort after numeric
-    ones and alphabetically among themselves (L=1012, M=1013, T=1020)."""
+    1000 + a base-26 positional encoding of its letters, so lettered parts sort after numeric
+    ones, alphabetically among themselves, and distinctly (single letters L=1012/M=1013/T=1020;
+    two-letter GP=1198, TC=1523 - no collision, unlike a plain letter-sum)."""
     letters, digits = _PARTS.match(num).groups()
     if not letters:
         return int(digits.split(".")[0]) // 100 * 100
-    return 1000 + sum(ord(c) - 64 for c in letters)
+    value = 0
+    for char in letters:
+        value = value * 26 + (ord(char) - 64)
+    return 1000 + value
+
+
+def _nums(num):
+    return tuple(int(part) for part in _PARTS.match(num).group(2).split("."))
 
 
 def order_key(num):
-    """Book order: the division band is most significant (numeric bands, then lettered), then
-    the decimal number within it."""
-    digits = _PARTS.match(num).group(2)
-    return (_band(num), *(int(part) for part in digits.split(".")))
+    """Book order for a numeric-then-lettered book (RIDOT): the division band is most
+    significant (numeric bands, then lettered), then the decimal number within it."""
+    return (_band(num), *_nums(num))
+
+
+def order_key_lettered_first(num):
+    """Book order for a lettered-then-numeric book (MDOT SHA: GP/TC before the numeric body).
+    A leading flag puts every lettered section before every numeric one (0 vs 1); lettered
+    sections then sort alphabetically by prefix, numeric ones by number."""
+    letters = _PARTS.match(num).group(1)
+    if letters:
+        return (0, letters, *_nums(num))
+    return (1, *_nums(num))
 
 
 def division_of(num):
     """Integer division id: the hundred band for a numeric section, the synthetic letter
-    band otherwise."""
+    band otherwise (shared by both orderings)."""
     return _band(num)
 
 
@@ -56,5 +73,17 @@ LETTER_PREFIX = SpecProfile(
     order_key=order_key,
     division_of=division_of,
     first_section="101.01",  # RIDOT opens numerically
+    stable_numbers=False,
+)
+
+# The reverse shape: a book whose lettered parts come FIRST, then a numeric body (MDOT SHA
+# opens with GP General Provisions and TC before its numeric technical sections). Same number
+# grammar and division ids as LETTER_PREFIX; only the ordering flips.
+LETTER_PREFIX_REVERSE = SpecProfile(
+    cluster="letter_prefix_reverse",
+    section_re=SECTION,
+    order_key=order_key_lettered_first,
+    division_of=division_of,
+    first_section="GP-1.01",  # MDOT SHA opens at GP-1.01 (General Provisions)
     stable_numbers=False,
 )
