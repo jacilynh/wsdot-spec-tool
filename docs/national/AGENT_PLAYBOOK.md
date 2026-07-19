@@ -89,8 +89,14 @@ A state's branch is `state/<slug>`; its status lives in `docs/national/status.js
   TOC where one exists.
 - **Pass:** coherent count, strictly monotonic order, sane division spread, TOC spot-checks
   match.
-- **Escalate:** no existing profile fits → supervisor designs the new cluster (Florida's
-  dash scheme `105-8` is the known case; it is NOT aashto_decimal).
+- **Escalate:** no existing profile fits → supervisor designs the new cluster. Four now
+  exist: `aashto_decimal` (num-leading `105.01`), `florida_dash` (`105-8`, dash before the
+  first sublevel), `section_prefix` ("SECTION NNN — Title", section-level only, no numbered
+  sub-headings), `wsdot_hyphen`. A book whose top-line gap ratio is ~1.0 has no running header
+  — sanity-check that top-of-page headings survive (the engine fix handles this, but confirm).
+- **Also escalate — source-PDF font corruption:** if extracted text is scrambled (a Caesar
+  shift, e.g. `(TXLSPHQW` for `Equipment`, from a broken ToUnicode map), the parser cannot
+  read it. Needs a decode/OCR step or a documented deferral (INDOT is the known case).
 
 ### Stage 2 — Adversarial parse QA (Sonnet, independent of Stage 1)
 - **Do:** pick 20 random pages from the PDF, read them directly, and confirm each page's
@@ -142,9 +148,16 @@ early waves generate playbook fixes that later waves inherit.
   tier-1 single-PDF AASHTO states** selected at kickoff from `catalog.json` (criteria:
   tier 1, aashto scheme, single PDF, verification passed, reuse not
   all-rights-reserved) and confirmed by Stage 0. All on the known-good profile path.
-- **Wave 2 — prove the hard capabilities (~6):** **Florida** (new dash cluster — supervisor
-  builds the profile; also the future P3 history pilot), **Indiana** (per-division PDFs —
-  multi-file ingestion), + 4 more tier-1s. Also the app-scaling checkpoint (below).
+- **Wave 2 — prove the hard capabilities (~6): DONE (5 built: CO, TN, VA, FL, ME; IN
+  deferred).** Florida needed the new `florida_dash` cluster as predicted — but Stage 1 also
+  found VA and ME on a second new cluster, `section_prefix` ("SECTION NNN — Title",
+  section-level), and Indiana was a single combined PDF, not per-division. A shared-engine
+  header-band fix (don't strip a heading that opens at the top of a page in a book with no
+  running header) was needed for FL/ME. IN is deferred on source-PDF font corruption. See
+  `retros/wave2.md`. Cluster count is now four: `wsdot_hyphen`, `aashto_decimal`,
+  `florida_dash`, `section_prefix`. **Lesson carried forward: the catalog's cluster label is a
+  lead, not truth — always run the Stage 1 parse probe.** The app-scaling checkpoint (below)
+  is now due (11 local states).
 - **Waves 3–6 — scale (~6–8/wave):** remaining tier-1 and tier-2 states, roster from
   `status.json`, playbook now stable.
 - **Final wave — the hard 9:** bot-walls, portals, gated archives. Expect manual
